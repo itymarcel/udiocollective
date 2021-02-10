@@ -1,0 +1,498 @@
+html, body {
+  margin:0px;
+  padding:0px;
+}
+body {
+  font-family: "Helvetica Neue";
+  font-size: 14px;
+  color: #222;
+  /*color: #F9F9D5;*/
+  position:relative;
+  margin:0px;
+  padding:0px;
+  background-color:#e1e1e1;
+  /*background-color:#1e1e1e;*/
+}
+
+a {
+  text-decoration: underline;
+  color:inherit;
+}
+a:visited {
+  text-decoration: underline;
+  color:inherit;
+}
+a:hover {
+  text-decoration: none;
+  color:inherit;
+}
+.wide-small-typo {
+
+}
+
+.floating-header {
+  position: fixed;
+  width:100%;
+  padding-left:15px;
+  padding-right:15px;
+  box-sizing: border-box;
+  font-size:12px;
+  opacity:0.7;
+  top:10px;
+  font-weight:500;
+
+  z-index:100;
+  letter-spacing: 6px;
+
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.floating-header a {
+  text-decoration: none;
+}
+.floating-header a .underline {
+  height:1px;
+  background-color:#222;
+  width: calc(100% - 6px); /*minus letter spacing*/
+}
+.floating-header a:hover .underline {
+  background-color:transparent;
+}
+.header {
+  position:relative;
+  height:70vh;
+  width:100%;
+  overflow:hidden;
+}
+.header .header-image-container {
+  position:relative;
+  width:600%;
+  height:100%;
+  left:0%;
+  display:flex;
+  transition:left 650ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+}
+.header .header-image-container .image {
+  position:relative;
+  width:16.6666667%;
+  background-size: cover;
+  background-position: center center;
+}
+.logo {
+  position:fixed;
+  width: 100%;
+  height: 100vh;
+  z-index:5;
+  overflow:hidden;
+}
+
+.description {
+  position:relative;
+  padding-top:15vh;
+  padding-bottom:15vh;
+  font-size:2.3em;
+  line-height:1.6;
+  z-index:10;
+  text-align:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.description > div {
+  width:80%;
+  max-width:900px;
+}
+.description .social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  margin-top:60px;
+}
+.description .social-links .social {
+  width: 40px;
+  height: 40px;
+  font-size:0px;
+  background-repeat:no-repeat;
+  background-size:90%;
+  background-position: center;
+  opacity:0.5;
+  margin:10px;
+  cursor:crosshair;
+}
+.description .social-links .social a {
+  width:100%;
+  height:100%;
+  display:block;
+  background:rgba(255, 255, 255, 0);
+}
+.description .social-links .social:hover {
+  opacity:1;
+}
+.seperator {
+  padding-left:15px;
+  padding-right:15px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom:50px;
+  font-weight:800;
+
+  text-transform: uppercase;
+}
+.latest {
+  position:relative;
+  z-index:10;
+  margin-bottom:250px;
+  padding:0px 15px 0px 15px;
+
+}
+.music-video {
+  position:relative;
+  width:80vw;
+  max-width: 1200px;
+  box-sizing: border-box;
+  height:calc(33.33333vw - 22px);
+  margin: 0px auto 150px auto;
+}
+.music-video .video-description {
+  margin-top: 15px;
+}
+
+#main {
+  position:relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: calc(33.33333vw - 22px);
+  grid-gap:15px;
+  padding: 0px 15px 0px 15px;
+  margin-bottom:350px;
+  z-index:10;
+}
+#main .release {
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+  transition:transform 80ms ease-out;
+}
+#main .release.not-released {
+  opacity:0.5;
+}
+#main .release.touched .hover-overlay {
+  background:rgba(0, 0, 0, 1);
+  display:flex;
+}
+#main .release.not-released.touched .release-image {
+  opacity:0.2;
+}
+@media (hover) {
+  #main .release:hover .hover-overlay {
+    background:rgba(0, 0, 0, 1);
+    display:flex;
+  }
+  #main .release.not-released:hover .release-image {
+    opacity:0.2;
+  }
+}
+#main .release .hover-overlay {
+  position:absolute;
+  flex-flow: column;
+  justify-content: center;
+  z-index:8;
+  font-size:1.6em;
+  background:rgba(0, 0, 0, 0);
+  width:100%;
+  height:100%;
+  left:0%;
+  top:0%;
+  display:none;
+  color: #e6e6e6;
+  text-transform: uppercase;
+}
+#main .release .hover-overlay .release-link {
+  position:relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom:2px solid #e6e6e6;
+}
+#main .release .hover-overlay .release-link .arrow {
+  position:relative;
+  top:2px;
+}
+#main .release .hover-overlay .release-link:hover {
+  border-bottom:2px solid transparent;
+}
+#main .release .hover-overlay .release-link, #main .release .hover-overlay span {
+  position:relative;
+  margin-left: auto; /* Important */
+  margin-right: auto; /* Important */
+  margin-top:10px;
+  margin-bottom:10px;
+  text-align: center;
+  text-transform: none;
+
+}
+#main .release .name-overlay {
+  position:absolute;
+  left:5px;
+  top:5px;
+  z-index:80;
+  background:black;
+
+
+  padding:10px;
+  color: #e6e6e6;
+
+}
+#main .release .release-image {
+  position:relative;
+  display:block;
+  width:100%;
+  height:100%;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+}
+
+/* ……………………… PEOPLE ……………………*/
+
+#people {
+  position:relative;
+  max-width: 1200px;
+  margin: 50px auto 0px auto;
+  z-index:90;
+}
+.people-headline .artist-name {
+  color:black;
+}
+
+.people-headline {
+  position:relative;
+  font-size:2.3em;
+  line-height:1.6;
+  color:#3418C7;
+  width:max-content;
+  padding-left:30px;
+  transform:rotateZ(90deg);
+  transform-origin:left bottom;
+}
+
+.people-grid {
+  display: grid;
+  position:relative;
+  box-sizing: border-box;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+  padding: 0px 15px 0px 15px;
+  margin-bottom:200px;
+
+}
+.people-grid .people-image {
+  position:relative;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.people-grid .people-image img {
+
+}
+.people-grid .people-image {
+  position:relative;
+  width:80%;
+  margin:0px auto 0px auto;
+}
+.people-grid .people-bio {
+  position:relative;
+  grid-column: 2 / span 2;
+  grid-row: 1 / span 1;
+  font-size:1.6em;
+  line-height:1.65em;
+  top:-0.325em;
+  vertical-align: super;
+}
+.people-grid .people-bio .meta-data {
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  font-size:0.625em;
+  position:relative;
+  font-size:0.625em;
+  line-height:1.65em;
+  margin-top:4em;
+}
+.people-grid .people-recent-releases {
+  width:50%;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+.people-grid .link {
+  color: #3418C7;
+  text-decoration: none;
+  border-bottom:1px solid #3418C7;
+  padding-bottom:1px;
+}
+.people-grid .link:hover {
+  border-bottom:none;
+  padding-bottom:1px;
+}
+.people-grid .people-social-links {
+  width:50%;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+.people-grid .people-recent-releases .headline, .people-grid .people-social-links .headline {
+  font-weight:bold;
+  margin-bottom:1em;
+}
+
+footer {
+  position:relative;
+  margin-bottom:50px;
+  width:100%;
+}
+footer div {
+  display:flex;
+  justify-content: center;
+}
+footer div * {
+  margin:0px 10px 0px 10px;
+  padding-bottom:3px;
+}
+footer div a {
+  text-decoration: none;
+  border-bottom:1px solid black;
+}
+footer div a:hover {
+  border-bottom: 1px solid transparent;
+}
+
+/* CUBE MAN CUBE */
+@keyframes rotate-cube {
+  from {transform: translateZ(-70px) rotateY(   0deg) rotateX(0deg) rotateZ(0deg);}
+  to {transform: translateZ(-70px) rotateY( -359deg) rotateX(-359deg) rotateZ(-359deg);}
+}
+
+/* The element to apply the animation to */
+
+.scene {
+  position:relative;
+  width: 100%;
+  height: 100%;
+  margin:auto;
+  perspective: 1000px;
+  will-change: perspective;
+  border:1px solid rgba(0, 0, 0, 0);
+  opacity:0.8;
+}
+
+.cube {
+  position:relative;
+  width: 1000px;
+  height: 1000px;
+  left:50%;
+  margin-left:-500px;
+  top:5%;
+  margin-top:-200px;
+  position: relative;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px) rotateX(0deg);
+  transition: transform 1s linear;
+
+
+  animation-name: rotate-cube;
+  animation-duration: 40s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  outline: 1px solid transparent;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  -webkit-background-clip:content-box;
+  background-clip:content-box;
+}
+
+.cube.show-front  { transform: translateZ(-100px) rotateY(   0deg); }
+.cube.show-right  { transform: translateZ(-100px) rotateY( -90deg); }
+.cube.show-back   { transform: translateZ(-100px) rotateY(-180deg); }
+.cube.show-left   { transform: translateZ(-100px) rotateY(  90deg); }
+.cube.show-top    { transform: translateZ(-100px) rotateX( -90deg); }
+.cube.show-bottom { transform: translateZ(-100px) rotateX(  90deg); }
+
+.cube__face {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(249, 249, 249, 0.2);
+  line-height: 200px;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  opacity: 1;
+  background-image:url('resources/udio.svg');
+  background-size: auto 10%;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  -webkit-background-clip:content-box;
+  background-clip:content-box;
+
+}
+
+.cube__face--front  { transform: rotateY(  0deg) translateZ(100px); }
+.cube__face--right  { transform: rotateY( 90deg) translateZ(100px); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(100px); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(100px); }
+.cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+
+
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    #main {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-auto-rows: calc(50vw - 22px);
+    }
+    .music-video {
+      width:100%;
+      height: calc(50vw - 22px);
+      margin-bottom:80px;
+    }
+}
+
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    #main {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-auto-rows: calc(50vw - 22px);
+    }
+    .music-video {
+      width:100%;
+      height: calc(50vw - 22px);
+      margin-bottom:80px;
+    }
+}
